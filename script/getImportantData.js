@@ -6,18 +6,22 @@ const doSmthWithData = async (cityName) => {
     try {
         const coordinates = await getCityCoordinates(cityName);
         const data = await getWeatherData(coordinates.lat, coordinates.lon);
-        console.log(data);
-        const newData = data.list.map(time => {
-            return {
-                ...time,
-                dt: timestampToDate(time.dt)
-            };
-        });
-        console.log(newData);
+        // console.log(data);
+        const newData = {
+            ...data,
+            list: data.list.map(time => {
+                return {
+                    ...time,
+                    dt: timestampToDate(time.dt)
+                };
+            })
+        };
+        // console.log(newData);
         return newData;
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
+doSmthWithData("Warszawa");
 export {doSmthWithData};

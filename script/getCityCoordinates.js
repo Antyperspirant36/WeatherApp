@@ -6,8 +6,8 @@ const getCityCoordinates = async (city) => {
     );
     const data = await response.json();
     // console.log(data);
-    console.log(`Lat: ${data[0].lat}`)
-    console.log(`Lon: ${data[0].lon}`)
+    // console.log(`Lat: ${data[0].lat}`)
+    // console.log(`Lon: ${data[0].lon}`)
     return data[0];
 };
 export {getCityCoordinates};
