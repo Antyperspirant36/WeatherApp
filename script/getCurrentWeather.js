@@ -1,10 +1,9 @@
 const API_KEY = "bb216b2195695e40ca7b0877851268d2";
 import { getCityCoordinates } from "./getCityCoordinates.js";
-import { timestampToDate } from "./uniTimestampToDate.js";
 const getCurrentWeather = async (cityName) => {
-    const cityData = await getCityCoordinates(cityName);    
-    const { lat, lon } = cityData;
     try {
+        const cityData = await getCityCoordinates(cityName);
+        const lat = cityData.lat, lon = cityData.lon;
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=pl&units=metric&appid=${API_KEY}`
         );
@@ -19,6 +18,5 @@ const getCurrentWeather = async (cityName) => {
         console.error('Fetch error:', error);
         throw error; // Re-throw the error to be handled by the calling function
     }
-};
-
+}
 export { getCurrentWeather };

@@ -2,10 +2,9 @@ import { getCityCoordinates} from "./getCityCoordinates.js";
 import { getWeatherData } from "./getWeatherData.js";
 import { timestampToDate } from "./uniTimestampToDate.js";
 
-const doSmthWithData = async (cityName) => {
+const doSmthWithData = async (lat, lon) => {
     try {
-        const coordinates = await getCityCoordinates(cityName);
-        const data = await getWeatherData(coordinates.lat, coordinates.lon);
+        const data = await getWeatherData(lat, lon);
         // console.log(data);
         const newData = {
             ...data,
@@ -16,12 +15,11 @@ const doSmthWithData = async (cityName) => {
                 };
             })
         };
-        // console.log(newData);
+        console.log(newData);
         return newData;
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
-
-doSmthWithData("Warszawa");
+// doSmthWithData("Warszawa");
 export {doSmthWithData};

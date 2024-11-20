@@ -10,4 +10,5 @@ const getCityCoordinates = async (city) => {
     // console.log(`Lon: ${data[0].lon}`)
     return data[0];
 };
+// getCityCoordinates("Warszawa");
 export {getCityCoordinates};
